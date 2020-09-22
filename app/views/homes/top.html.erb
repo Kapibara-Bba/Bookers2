@@ -3,19 +3,28 @@
   <div class="container">
     <div class="row">
       <div class="top-message col-lg-offset-3 col-lg-6">
-        <h1 class="welcome">welcome to<span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>  !!</h1>
-        <p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>,</p>
-        <p>you can share and exchange your opinions , inpressions , and emotions</p>
-        <p>about various books!</p>
-        <div class="btn">
-          <div class="row">
-            <%= link_to "Log in", user_session_path, class: 'btn btn-info btn-block col-lg-12' %>
-          </div>
-          <div class="row">
-            <%= link_to "Sgin up", new_user_session_path, class: 'btn btn-success' %>
-          </div>
+        <div class="row">
+          <h1 class="welcome">welcome to<span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>  !!</h1>
+          <p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>,</p>
+          <p>you can share and exchange your opinions , inpressions , and emotions</p>
+          <p>about various books!</p>
+        </div>
+        <div class="row">
+          <%= link_to "Log in", user_session_path, class: 'btn btn-info btn-block col-lg-12' %>
+        </div>
+        <div class="row">
+          <%= link_to "Sgin up", new_user_session_path, class: 'btn btn-success btn-block col-lg-12' %>
         </div>
       </div>
     </div>
   </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-9 col-lg-3">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
