@@ -1,0 +1,20 @@
+<div class="body">
+  <div class="container">
+    <p id></p>
+    <h2>User info</h2>
+    <%= form_with model:@user, local:true do |f| %>
+      <div class="form-group has-icon">
+        <label class="control-label sr-only" for="inputNmne">Name</label>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+      <div class="form-grop has-icon">
+        <div class="user-edit-image">
+          <%= attachment_image_tag @user, :profile_image, :full, 100, 100, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+        </div>
+        <label class="control-label sr-only" for="inputNmne">ProfileImage</label>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+      </div>
+      <%= f.submit "Update User" %>
+    <% end %>
+  </div>
+</div>
