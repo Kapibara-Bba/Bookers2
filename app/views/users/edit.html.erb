@@ -3,16 +3,20 @@
     <p id></p>
     <h2>User info</h2>
     <%= form_with model:@user, local:true do |f| %>
-      <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputNmne">Name</label>
+      <div class="field">
+        <label class="control-label sr-only" for="Name">Name</label>
         <%= f.text_field :name, autofocus: true %>
       </div>
-      <div class="form-grop has-icon">
+      <div class="field">
         <div class="user-edit-image">
           <%= attachment_image_tag @user, :profile_image, :full, 100, 100, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
         </div>
-        <label class="control-label sr-only" for="inputNmne">ProfileImage</label>
+        <label class="control-label sr-only" for="ProfileImage">ProfileImage</label>
         <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+      </div>
+      <div class="field">
+        <label class="control-label sr-only" for="Introduction">Introduction</label>
+        <%= f.text_area :introduction %>
       </div>
       <%= f.submit "Update User" %>
     <% end %>
