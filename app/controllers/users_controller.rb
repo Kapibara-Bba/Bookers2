@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @user = User.new
+    @users = User.all
   end
 
   def show
@@ -20,5 +22,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
+  
 end
 

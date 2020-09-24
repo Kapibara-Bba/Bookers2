@@ -30,7 +30,7 @@
                   <% end %>
                 </li>
                 <li class="">
-                  <%= link_to books_path do %>
+                  <%= link_to users_path do %>
                   <i class="glyphicon glyphicon-book" aria-hidden="true"></i> Book
                   <% end %>
                 </li>
@@ -38,9 +38,6 @@
                   <%= link_to destroy_user_session_path, method: :delete do %>
                   <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i> logout
                   <% end %>
-                </li>
-                <li class="">
-                  <%= link_to 'logout', user_path(current_user.id) %>
                 </li>
               <% else %>
                 <li class="">
@@ -77,9 +74,7 @@
         </div>
       </div>
     </div>
-  </footer>
-
-
+    </footer>
 
     <%= yield %>
   </body>
