@@ -1,2 +1,50 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="body">
+  <div class="container">
+    <p id></p>
+    <div class="row">
+      <div class="col-lg-3">
+        <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :full, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+        <table class="table">
+          <tboby>
+            <tr>
+              <th>name</th>
+              <th><%= @users.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+          </tboby>
+        </table>
+        <div class="row">
+          <%= link_to edit_user_path do %>
+          <button type="button" class="btn btn-block col-lg-12">
+            <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+          </button>
+          <% end %>
+        </div>
+        <h2>New Book</h2>
+        <%= form_with model:@user, local: true do |f| %>
+          <div class="field-row">
+            <label for="title">Title</label>
+            <div class="row">
+                <%= f.text_field :title, class: 'col-lg-12' %>
+            </div>
+          </div>
+          <div class="field-row">
+            <label for="opinion">Opinion</label>
+            <div class="row">
+              <%= f.text_area :opinion, class: 'col-lg-12' %>
+            </div>
+          </div>
+          <div class="actions-row">
+            <%= f.submit "Create Book", class: 'btn btn-primary col-xs-12' %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
