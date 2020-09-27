@@ -4,12 +4,12 @@
     <div class="row">
       <div class="col-lg-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @profile_images, :profile_image, :full, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
         <table class="table">
           <tboby>
             <tr>
               <th>name</th>
-              <th><%= current_user.name %></th>
+              <th><%= @user.name %></th>
             </tr>
             <tr>
               <th>introduction</th>
@@ -18,7 +18,7 @@
           </tboby>
         </table>
         <div class="row">
-          <%= link_to users_path do %>
+          <%= link_to edit_user_path(@user) do %>
           <button type="button" class="btn btn-block col-lg-12">
             <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
           </button>

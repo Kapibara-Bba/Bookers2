@@ -21,5 +21,3 @@ class ApplicationController < ActionController::Base
     user_path(resource)
   end
 end
-
-
