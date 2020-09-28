@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
         <table class="table">
           <tboby>
             <tr>
@@ -25,7 +25,7 @@
           <% end %>
         </div>
         <h2>New Book</h2>
-        <%= form_with model:@book, local: true do |f| %>
+        <%= form_with model:@new_book, local: true do |f| %>
           <div class="field-row">
             <label for="title">Title</label>
             <div class="row">
@@ -35,7 +35,7 @@
           <div class="field-row">
             <label for="opinion">Opinion</label>
             <div class="row">
-              <%= f.text_area :opinion, class: 'col-lg-12' %>
+              <%= f.text_area :body, class: 'col-lg-12' %>
             </div>
           </div>
           <div class="actions-row">
@@ -49,7 +49,10 @@
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
+                <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg' %><br>
+                <%= @user.name %>
+                <% end %>
               </td>
               <td>
                 <span class="tbody"><%= @book.title %></span>
@@ -58,7 +61,7 @@
                 <span class="tbody"><%= @book.body %></span>
               </td>
               <td>
-                <%= link_to "Edit", edit_book_path(@books), class: 'btn btn-success' %>
+                <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %>
               </td>
               <td>
                 <%= link_to "Destroy", books_path, method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
