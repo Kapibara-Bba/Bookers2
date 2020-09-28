@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user = User.find(params[:id])
     @book = Book.new
-    @ook = Book.find(params[:id])
+    @book_show = Book.find(params[:id])
   end
 
   def edit
