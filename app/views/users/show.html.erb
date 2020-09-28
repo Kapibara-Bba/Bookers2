@@ -57,7 +57,7 @@
             </tr>
           </thead>
           <tbody>
-          <% @book_show.each do |book| %>
+          <% @books.each do |book| %>
             <tr>
               <td>
                 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
