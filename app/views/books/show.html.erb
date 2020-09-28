@@ -1,0 +1,74 @@
+<div class="body">
+  <div class="container">
+    <p id></p>
+    <div class="row">
+      <div class="col-lg-3">
+        <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
+        <table class="table">
+          <tboby>
+            <tr>
+              <th>name</th>
+              <th><%= @user.name %></th>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <th><%= @user.introduction %></th>
+            </tr>
+          </tboby>
+        </table>
+        <div class="row">
+          <%= link_to edit_user_path(@user) do %>
+          <button type="button" class="btn btn-block col-lg-12">
+            <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+          </button>
+          <% end %>
+        </div>
+        <h2>New Book</h2>
+        <%= form_with model:@book, local: true do |f| %>
+          <div class="field-row">
+            <label for="title">Title</label>
+            <div class="row">
+                <%= f.text_field :title, class: 'col-lg-12' %>
+            </div>
+          </div>
+          <div class="field-row">
+            <label for="opinion">Opinion</label>
+            <div class="row">
+              <%= f.text_area :opinion, class: 'col-lg-12' %>
+            </div>
+          </div>
+          <div class="actions-row">
+            <%= f.submit "Create Book", class: 'btn btn-primary col-xs-12' %>
+          </div>
+        <% end %>
+        </div>
+      <div class="col-lg-9">
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+          <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag @user_show, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-img" %>
+              </td>
+              <td>
+                <span class="tbody"><%= @book.title %></span>
+              </td>
+              <td>
+                <span class="tbody"><%= @book.body %></span>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_book_path(book.id), class: 'btn btn-success btn-block' %>
+              </td>
+              <td>
+                <%= link_to "Destroy", books_path, method: :delete, "data-confirm" => "Are you sure?" %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
