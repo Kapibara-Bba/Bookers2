@@ -25,7 +25,7 @@
           <% end %>
         </div>
         <h2>New Book</h2>
-        <%= form_with model:@book, local: true do |f| %>
+        <%= form_with model:@new_book, local: true do |f| %>
           <div class="field-row">
             <label for="title">Title</label>
             <div class="row">
@@ -35,7 +35,7 @@
           <div class="field-row">
             <label for="opinion">Opinion</label>
             <div class="row">
-              <%= f.text_area :opinion, class: 'col-lg-12' %>
+              <%= f.text_area :bo, class: 'col-lg-12' %>
             </div>
           </div>
           <div class="actions-row">
