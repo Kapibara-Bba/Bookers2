@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
+        <%= attachment_image_tag @user_, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
         <table class="table">
           <tboby>
             <tr>
@@ -61,7 +61,9 @@
                 <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
               </td>
               <td>
-                <span class="tbody"><%= book.title %></span>
+                <%= link_to book_path(book) do %>
+                  <span class="tbody"><%= book.title %></span>
+                <% end %>
               </td>
               <td>
                 <span calss="tbody"><%= book.body %></span>
