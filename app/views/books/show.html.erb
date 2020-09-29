@@ -1,10 +1,15 @@
 <div class="body">
   <div class="container">
-    <p id></p>
+    <% if flash[:create] %>
+      <div class="massege"><p><%= flash[:create] %></p></div>
+    <% end %>
+    <% if flash[:update] %>
+      <div class="massege"><p><%= flash[:update] %></p></div>
+    <% end %>
     <div class="row">
       <div class="col-lg-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @user_show, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
         <table class="table">
           <tboby>
             <tr>

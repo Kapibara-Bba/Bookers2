@@ -16,6 +16,12 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
  .field, .actions {
   margin-bottom: 10px;
  }
@@ -24,3 +30,9 @@
  display: block;
  margin-bottom: 10px;
 }
+
+a {
+ color: black;
+}
+
+

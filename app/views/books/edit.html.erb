@@ -18,9 +18,11 @@
             </div>
           </div>
           <div class="actions-row">
-            <%= f.submit "Create Book", class: 'btn btn-primary col-lg-12' %>
+            <%= f.submit "Update Book", class: 'btn btn-primary col-lg-12' %>
           </div>
         <% end %>
+        <%= link_to "Show", book_path(@book) %>
+        <%= link_to "Back", books_path %>
       </div>
     </div>
   </div>
