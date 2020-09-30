@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @user = current_user
     @users = User.all
@@ -45,4 +45,11 @@ class UsersController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
+  def baria_user
+    unless User.find(params[:id]).user.id.to_i == current_user.id
+      redirect_to root_path
+    end
+  end
+
 end
+
