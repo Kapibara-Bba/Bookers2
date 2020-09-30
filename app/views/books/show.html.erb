@@ -23,8 +23,18 @@
           </button>
           <% end %>
         </div>
-        <h2>New Book</h2>
+        <h2>New book</h2>
         <%= form_with model:@new_book, local: true do |f| %>
+        <% if @new_book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@new_book.errors.count, "error") %> prohibited this book from being saved:</h2>
+            <ul>
+              <% @new_book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
           <div class="field-row">
             <label for="title">Title</label>
             <div class="row">
@@ -38,7 +48,7 @@
             </div>
           </div>
           <div class="actions-row">
-            <%= f.submit "Create Book", class: 'btn btn-primary col-xs-12' %>
+            <%= f.submit "Create Book", class: 'btn btn-primary btn-block col-lg-12' %>
           </div>
         <% end %>
         </div>
@@ -49,7 +59,7 @@
             <tr>
               <td>
                 <%= link_to user_path(@user) do %>
-                  <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: 'no_image.jpg' %><br>
+                  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg' %><br>
                   <%= @user.name %>
                 <% end %>
               </td>

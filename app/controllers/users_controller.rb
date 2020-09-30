@@ -18,17 +18,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @new_user = User.new(user_params)
     @users = User.all
-    @user.save
+    @new_user.save
     redirect_to user_path(@user)
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    @user_show = User.find(params[:id])
+    if @user_show.update(user_params)
       flash[:user_update] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user_show)
     else
       render 'edit'
     end

@@ -1,19 +1,17 @@
 <div class="body">
   <div class="container">
-    <p id></p>
     <h2>User info</h2>
-    <% if @user_show.errors.any? %>
+    <%= form_with model:@user_show, local:true do |f| %>
+     <% if @user_show.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_show.errors.count, "error") %> prohibited this book from being saved:</h2>
-
       <ul>
         <% @user_show.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
-  <% end %>
-    <%= form_with model:@user_show, local:true do |f| %>
+    <% end %>
       <div class="field">
         <label class="control-label sr-only" for="Name">Name</label>
         <%= f.text_field :name, autofocus: true %>
