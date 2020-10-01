@@ -18,7 +18,7 @@
         </table>
         <div class="row">
           <%= link_to edit_user_path(@user) do %>
-          <button type="button" class="btn btn-block col-lg-12">
+          <button type="button" class="btn btn-default btn-block col-lg-12">
             <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
           </button>
           <% end %>
@@ -48,7 +48,9 @@
             </div>
           </div>
           <div class="actions-row">
-            <%= f.submit "Create Book", class: 'btn btn-primary btn-block col-lg-12' %>
+            <div class="row">
+              <%= f.submit "Create Book", class: 'btn btn-primary col-lg-12' %>
+            </div>
           </div>
         <% end %>
         </div>
@@ -59,7 +61,7 @@
             <tr>
               <td>
                 <%= link_to user_path(@user) do %>
-                  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg' %><br>
+                  <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %><br>
                   <%= @user.name %>
                 <% end %>
               </td>
