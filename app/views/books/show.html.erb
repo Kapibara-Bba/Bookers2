@@ -72,10 +72,14 @@
                 <span class="tbody"><%= @book.body %></span>
               </td>
               <td>
-                <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %>
+                <% if @user.id == current_user.id %>
+                  <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %>
+                <% end %>
               </td>
               <td>
-                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
+                <% if @user.id == current_user.id %>
+                  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
+                <% end %>
               </td>
             </tr>
           </tbody>
