@@ -3,24 +3,32 @@
     <div class="row">
       <div class="col-xs-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
+        <%= attachment_image_tag @user_show, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
         <table class="table">
           <tboby>
             <tr>
               <th>name</th>
-              <th><%= @user.name %></th>
+              <th><%= @user_show.name %></th>
             </tr>
             <tr>
               <th>introduction</th>
-              <th><%= @user.introduction %></th>
+              <th><%= @user_show.introduction %></th>
             </tr>
           </tboby>
         </table>
         <div class="row">
-          <%= link_to edit_user_path(@user) do %>
-          <button type="button" class="btn btn-default btn-block col-xs-12">
-            <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
-          </button>
+          <% if @book.user.id == current_user.id %>
+            <%= link_to edit_user_path(@user) do %>
+            <button type="button" class="btn btn-default btn-block col-xs-12">
+              <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+            </button>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@user) do %>
+            <button type="button" class="btn btn-default btn-block col-xs-12">
+              <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+            </button>
+            <% end %>
           <% end %>
         </div>
         <h2>New book</h2>
@@ -72,12 +80,12 @@
                 <span class="tbody"><%= @book.body %></span>
               </td>
               <td>
-                <% if @user.id == current_user.id %>
+                <% if @book.user.id == current_user.id %>
                   <%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %>
                 <% end %>
               </td>
               <td>
-                <% if @user.id == current_user.id %>
+                <% if @book.user.id == current_user.id %>
                   <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
                 <% end %>
               </td>
