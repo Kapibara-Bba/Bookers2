@@ -17,10 +17,18 @@
           </tboby>
         </table>
         <div class="row">
-          <%= link_to edit_user_path do %>
+          <% if @user.id == current_user.id %>
+            <%= link_to edit_user_path do %>
               <button type="button" class="btn btn-default btn-block col-xs-12">
                 <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
               </button>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@user) do %>
+              <button type="button" class="btn btn-default btn-block col-xs-12">
+                <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
+              </button>
+            <% end %>
           <% end %>
         </div>
         <h2>New book</h2>
