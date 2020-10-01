@@ -77,7 +77,7 @@
           <% @user_show.books.each do |book| %>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+                <%= attachment_image_tag @user_show, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
               </td>
               <td>
                 <%= link_to book_path(book) do %>
