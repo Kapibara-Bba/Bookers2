@@ -35,8 +35,12 @@
  margin-bottom: 10px;
 }
 
-a {
- color: black;
+.a {
+ color: blue;
+}
+
+.a hover {
+ background-color: black;
 }
 
 .notice {
@@ -46,3 +50,12 @@ a {
 .alert {
  color: black;
 }
+
+.btn-info {
+  color: #fff;
+}
+
+.btn-success {
+  color: #fff;
+}
+
