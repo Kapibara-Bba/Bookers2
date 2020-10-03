@@ -11,13 +11,17 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @user_show = User.find(params[:id])
+    #@user = User.all
     @new_book = Book.new
     @books = Book.all
-    #@book = Book(params[:id])
+    #@book = Book.find(params[:id])
   end
 
   def edit
     @user_show = User.find(params[:id])
+    if @user_show.id != current_user.id
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
@@ -53,4 +57,3 @@ class UsersController < ApplicationController
   end
 
 end
-
