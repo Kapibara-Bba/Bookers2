@@ -82,7 +82,9 @@
                 <span calss="tbody"><%= book.body %></span>
               </td>
               <td>
-
+                <% if current_user.already_favorited?(book) %>
+                  
+                <% end %>
               </td>
             </tr>
           <% end %>
