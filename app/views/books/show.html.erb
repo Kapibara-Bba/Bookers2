@@ -91,6 +91,33 @@
                   <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
                 <% end %>
               </td>
+              <td>
+                <% if current_user.already_favorited?(@book) %>
+                  <%= link_to book_favorites_path(@book), method: :delete do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to book_favorites_path(@book), method: :post do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+                <%= @book.favorites.count %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+                  <div class="row">
+                    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %>
+                  </div>
+                  <%= f.submit "送信", class: 'btn btn-primary' %>
+                <% end %>
+              </td>
+              <td>
+                <% if @book_comment.user == current_user %>
+                  <%= link_to "削除", book_path(@book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>
