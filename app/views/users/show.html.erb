@@ -88,6 +88,9 @@
                 <span calss="tbody"><%= book.body %></span>
               </td>
               <td>
+                <td>
+                コメント数：<%= book.book_comments.count %>
+              </td>
               </td>
             </tr>
           <% end %>

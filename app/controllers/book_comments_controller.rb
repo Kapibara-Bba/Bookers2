@@ -1,5 +1,5 @@
 class BookCommentsController < ApplicationController
-  before_action :correct_user, only: [:destroy]
+  before_action :current_user, only: [:destroy]
 
   def create
     @book = Book.find(params[:book_id])
@@ -18,8 +18,8 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @book_comment = current_user.book_comments.find_by(book_id: @book.id)
     @book_comment.destroy
-    #redirect_to book_path(@book)
-    redirect_back(fallback_location: root_path)
+    redirect_to book_path(@book)
+    #redirect_back(fallback_location: root_path)
   end
 
   private
