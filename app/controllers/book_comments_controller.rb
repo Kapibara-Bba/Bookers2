@@ -1,9 +1,11 @@
 class BookCommentsController < ApplicationController
+  before_action :correct_user, only: [:destroy]
 
   def create
     @book = Book.find(params[:book_id])
     @book_comment = current_user.book_comments.new(book_comment_params)
     @book_comment.book_id = @book.id
+    @book_comment.user_id = current_user.id
     if @book_comment.save
       flash[:create] = "You have creatad comment successfully."
       redirect_to book_path(@book)
@@ -16,7 +18,8 @@ class BookCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @book_comment = current_user.book_comments.find_by(book_id: @book.id)
     @book_comment.destroy
-    redirect_to book_path(@book)
+    #redirect_to book_path(@book)
+    redirect_back(fallback_location: root_path)
   end
 
   private
