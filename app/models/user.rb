@@ -28,11 +28,11 @@ class User < ApplicationRecord
     relationship = self.relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
-  
+
   def following?(other_user)
     self.followings.include?(other_user)
   end
-  
+
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
