@@ -31,6 +31,21 @@
             <% end %>
           <% end %>
         </div>
+        <% if @user != current_user %>
+          <div id="follow_form">
+            <% if current_user.following?(@user) %>
+              <%= form_with(model: current_user.following_relationships.build) do |f| %>
+                <%= f.hidden_field :following_id, value: @user.id %>
+                <%= f.submit "フォローする", class: "btn btn-outline-secondary" %>
+              <% end %>
+            <% else %>
+              <%= form_with(model: current_user.following_relationships.find_by(following_id: @user.id),method: :delete) do |f| %>
+                <%= f.hidden_field :following_id %>  
+                <%= f.submit "フォローを外す", class: "btn btn-outline-secondary" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
         <h2>New book</h2>
         <%= form_with model:@new_book, local: true do |f| %>
         <% if @new_book.errors.any? %>
