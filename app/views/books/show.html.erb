@@ -3,49 +3,9 @@
     <div class="row">
       <div class="col-xs-3">
         <h2>User info</h2>
-        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: 'no_image.jpg', class: "pull-left profile-img" %>
-        <table class="table">
-          <tboby>
-            <tr>
-              <th>name</th>
-              <th><%= @book.user.name %></th>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <th><%= @book.user.introduction %></th>
-            </tr>
-          </tboby>
-        </table>
-        <div class="row">
-          <% if @book.user.id == current_user.id %>
-            <%= link_to edit_user_path(current_user) do %>
-            <button type="button" class="btn btn-default btn-block col-xs-12">
-              <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
-            </button>
-            <% end %>
-          <% else %>
-            <%= link_to user_path(current_user) do %>
-            <button type="button" class="btn btn-default btn-block col-xs-12">
-              <i class="glyphicon glyphicon-wrench" aria-hidden="true"></i>
-            </button>
-            <% end %>
-          <% end %>
-        </div>
-        <% if logger? && @user != current_user %>
-          <div id="follow_form">
-            <% if current_user.following?(@user) %>
-              <%= form_with(model: current_user.following_relationships.build) do |f| %>
-                <%= f.hidden_field :following_id, value: @user.id %>
-                <%= f.submit "フォローする", class: "btn btn-outline-secondary" %>
-              <% end %>
-            <% else %>
-              <%= form_with(model: current_user.following_ids.find_by(following_id: @user.id),method: :delete) do |f| %>
-                <%= f.hidden_field :following_id %>
-                <%= f.submit "フォローを外す", class: "btn btn-outline-secondary" %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+        
+        <%= render 'users/info', user: @book.user %>
+        
         <h2>New book</h2>
         <%= form_with model:@new_book, local: true do |f| %>
         <% if @new_book.errors.any? %>

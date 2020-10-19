@@ -1,42 +1,7 @@
 <div class="body">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-3">
-        <h2>User info</h2>
-        
-        <%= render 'users/info', user: current_user %>
-
-        <h2>New book</h2>
-        <%= form_with model:@new_book, local: true do |f| %>
-        <% if @new_book.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@new_book.errors.count, "error") %> prohibited this book from being saved:</h2>
-            <ul>
-              <% @new_book.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-          <div class="field-row">
-            <label for="title">Title</label>
-            <div class="row">
-                <%= f.text_field :title, class: 'col-xs-12' %>
-            </div>
-          </div>
-          <div class="field-row">
-            <label for="opinion">Opinion</label>
-            <div class="row">
-              <%= f.text_area :body, class: 'col-xs-12' %>
-            </div>
-          </div>
-          <div class="actions-row">
-            <div class="row">
-              <%= f.submit "Create Book", class: 'btn btn-primary col-xs-12' %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+    <h2>Follow Users</h2>
+    <% if @users.exists? %>
       <div class="col-xs-9">
         <h2>Users</h2>
         <table class="table table-hover table-inverse">
@@ -76,6 +41,8 @@
           </tbody>
         </table>
       </div>
-    </div>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
   </div>
-</div>
+</div>  
