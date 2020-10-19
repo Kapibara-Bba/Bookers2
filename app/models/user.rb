@@ -12,13 +12,13 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
- 
+
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
- 
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
- 
+
   has_many :followers, through: :reverse_of_relationships, source: :follower
- 
+
   has_many :followings, through: :relationships, source: :followed
 
 
@@ -37,19 +37,19 @@ class User < ApplicationRecord
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
-  
-  def self.search(search,word)
-    if search == "perfect_match"
-      @user = User.where("#{word}")
-    elsif search == "forward_match"
+
+  def self.search_for(word, search)
+    if search == "perfect"
+      @user = User.where(name: word)
+    elsif search == "forward"
       @user = User.where("name LIKE?","#{word}%")
-    elsif search == "backward_match"
+    elsif search == "backward"
       @user = User.where("name LIKE?","%#{word}")
-    elsif search == "partial_match"
+    elsif search == "partial"
       @user = User.where("name LIKE?","%#{word}%")
-    else 
+    else
       @user = User.all
     end
   end
-      
+
 end

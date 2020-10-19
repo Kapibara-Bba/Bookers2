@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#show'
   devise_for :users
   #, controllers: {
+  get 'search' => 'searches#search'
    # sessions: 'users/sessions',
     #registrations: 'users/registrations'
  #}
@@ -17,6 +18,6 @@ Rails.application.routes.draw do
     resource :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  
- 
+
+
 end

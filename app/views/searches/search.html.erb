@@ -1,0 +1,69 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-5">
+        <% if @range == 'book' %>
+          <h2>Books search for <%= @word %></h2>
+        <% else %>
+          <h2>Users search for <%= @word %></h2>
+        <% end %>
+        <table class="table table-hover table-inverse">
+          <% if @range == 'book' %>
+            <thead>
+              <tr>
+                <th>    </th>
+                <th>Title</th>
+                <th>Opinion</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @book.each do |book| %>
+                <tr>
+                  <td>
+                    <%= link_to user_path(book.user) do %>
+                      <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to book_path(book) do %>
+                      <span class="tbody"><%= book.title %></span>
+                    <% end %>
+                  </td>
+                  <td>
+                    <span calss="tbody"><%= book.body %></span>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          <% else %>
+            <thead>
+              <tr>
+                <th>image</th>
+                <th>name</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.each do |user| %>
+                <div class="row">
+                  <tr>
+                    <td>
+                      <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+                    </td>
+                    <td>
+                      <span class="tbody"><%= user.name %></span>
+                    </td>
+                    <td>
+                      <%= link_to "Show", user_path(user) %>
+                    </td>
+                  </tr>
+                </div>
+              <% end %>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
