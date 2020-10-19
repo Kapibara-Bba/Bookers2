@@ -67,7 +67,16 @@
         </nav>
       </div>
     </header>
-
+    <div class="search">
+      <% if user_signed_in? %>
+        <%= form_with url: search_path, method: :get, local: true do |form| %>
+          <%= f.text_field_tag (:word) %>
+          <%= f.select_tag 'range', options_for_select([['User', '1'], ['Book', '2']]) %>
+          <%= f.select_tag 'search', options_for_select([["完全一致","perfect_match"],["前方一致","forward_match"],["後方一致","backward_match"],["部分一致","partial_match"]]) %>
+          <%= f.submit_tag "検索" %>
+        <% end %>
+      <% end %>
+    </div>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
