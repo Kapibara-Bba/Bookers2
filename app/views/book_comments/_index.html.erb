@@ -1,9 +1,5 @@
-<tboby>
-  <tr>
-    <td>
-      <% book.book_comments.each do |comment| %>
-    </td>
-  </tr>
+
+<% book.book_comments.each do |comment| %>
   <tr>
     <td>
       <%= link_to user_path(comment.user) do %>
@@ -12,9 +8,8 @@
       <% end %>
       <%= comment.comment %>
       <% if current_user == comment.user %>
-        <%= link_to "削除", book_book_comments_path(book), method: :delete, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
-      <% end %>
+        <%= link_to "削除", book_book_comments_path(book), method: :delete, remote: true, "data-confirm" => "Are you sure?", class: 'btn btn-danger' %>
       <% end %>
     </td>
   </tr>
-</tboby>
+<% end %>

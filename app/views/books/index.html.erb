@@ -65,7 +65,7 @@
                 <span calss="tbody"><%= book.body %></span>
               </td>
               <td>
-                <%= render 'favorites/favorites-btn', book: @book %>
+                <%= render 'favorites/favorites-btn', book: book %>
               </td>
               <td>
                 コメント数：<%= book.book_comments.count %>

@@ -34,9 +34,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  def already_favorited?(book)
-    self.favorites.exists?(book_id: book.id)
-  end
+  
 
   def self.search_for(word, search)
     if search == "perfect"
