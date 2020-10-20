@@ -50,7 +50,7 @@
           </thead>
           <tbody>
           <% @books.each do |book| %>
-            <tr>
+            <tr id="book_<%= book.id %>">
               <td>
                 <%= link_to user_path(book.user) do %>
                   <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
@@ -64,7 +64,7 @@
               <td>
                 <span calss="tbody"><%= book.body %></span>
               </td>
-              <td>
+              <td class="favorites-btn">
                 <%= render 'favorites/favorites-btn', book: book %>
               </td>
               <td>
