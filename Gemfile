@@ -70,3 +70,5 @@ gem "refile-mini_magick"
 
 gem 'sprockets'
 
+gem 'jp_prefecture'
+gem 'dotenv-rails'
