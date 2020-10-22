@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
+  
   root to: 'homes#top'
   get 'home/about' => 'homes#show'
   devise_for :users
