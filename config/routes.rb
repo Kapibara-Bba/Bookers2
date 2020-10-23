@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: '/letter_opener'
-  end
-  
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   root to: 'homes#top'
   get 'home/about' => 'homes#show'
   devise_for :users
@@ -17,6 +16,10 @@ Rails.application.routes.draw do
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
+  
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+  resources :rooms, only: [:create, :show]
 
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
     resource :book_comments, only: [:create, :destroy]

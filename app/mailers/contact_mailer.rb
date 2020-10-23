@@ -1,7 +1,9 @@
 class ContactMailer < ApplicationMailer
 
-  def send_when_admin_reply(user, contact)
+  default from: 'kapibara.bba0924@gmail.com'
+
+  def complete_registration(user)
     @user = user
-    mail(:subject => "登録完了のお知らせ", to: user.email)
+    mail(:subject => "登録完了のお知らせ", :to => user.email)
   end
 end
