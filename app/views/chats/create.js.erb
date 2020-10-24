@@ -1,0 +1,3 @@
+$("textarea").val("");
+$(".chat-message").html("<%= j(render 'chats/chat-message', chats: @chats, user: @user) %>");
+
