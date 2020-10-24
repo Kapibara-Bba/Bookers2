@@ -1,1 +1,14 @@
+<div class="body">
+  <div class="container mt-5">
+    <div class="row">
+      <h2 class="chat-user">
+        <%= @user.name %> さんとのチャット
+      </h2>
+      <div class="chat_massege">
+        <%= render 'chat_message', chats: @chats %>
+      </div>
+    </div>
+  </div>
+</div>
+
 

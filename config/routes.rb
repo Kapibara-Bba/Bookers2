@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   
   get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:create]
+  resources :chats, only: [:create, :show]
   resources :rooms, only: [:create, :show]
 
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
