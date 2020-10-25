@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'home/about' => 'homes#show'
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+   }
   #, controllers: {
   get 'search' => 'searches#search'
    # sessions: 'users/sessions',
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   	get 'followings' => 'relationships#followings', as: 'followings'
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
-  
+
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create, :show]
   resources :rooms, only: [:create, :show]
