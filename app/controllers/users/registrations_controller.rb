@@ -10,10 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    ContactMailer.complete_registration(current_user).deliver
-  end
+  
 
   # GET /resource/edit
   # def edit
