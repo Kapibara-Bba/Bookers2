@@ -5,4 +5,3 @@ class ThanksMailer < ApplicationMailer
   end
 end
 
-
