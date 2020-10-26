@@ -1,15 +1,19 @@
 <div class="body">
   <div class="container mt-5">
     <div class="row">
-      <h2 class="chat-user">
-        <%= @user.name %> さんとのチャット
-      </h2>
-      <table class="chat-message">
-        <%= render "chats/chat-message", chats: @chats, user: @user %>
-      </table>
+      <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+      <div class="message">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+            <p style="text-align: right;"><%= chat.message %></p>
+          <% else %>
+            <p style="text-align: left;"><%= chat.message %></p>
+          <% end %>
+        <% end %>
+      </div>
       <div class="chat-form">
         <%= form_with model: @chat do |f| %>
-          <%= f.text_area :message %>
+          <%= f.text_field :message %>
           <%= f.submit "送信", class: 'btn btn-primary' %>
         <% end %>
       </div>

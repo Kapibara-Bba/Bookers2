@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   end
 
   get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:create, :show]
-  resources :rooms, only: [:create, :show]
+  resources :chats, only: [:create]
+  #resources :rooms, only: [:create, :show]
 
   resources :books, only: [:index, :show, :edit, :create, :update, :destroy] do
     resource :book_comments, only: [:create, :destroy]
